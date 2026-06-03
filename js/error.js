@@ -262,7 +262,10 @@ the error database.
 ===========================================
 */
 
+const ERROR_DATABASE = [ ... ];
 
+// 👇 ADD THIS LINE
+window.ERROR_DATABASE = ERROR_DATABASE;
 function getAllErrors() {
     return ERROR_DATABASE;
 }
