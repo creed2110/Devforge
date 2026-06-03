@@ -307,3 +307,6 @@ console.log(
 
 ===========================================
 */
+window.getAllErrors = getAllErrors;
+window.findError = findError;
+window.filterErrors = filterErrors;
