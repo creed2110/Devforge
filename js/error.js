@@ -291,7 +291,11 @@ function filterErrors(searchText) {
     );
 
 }
+function getAllErrors() {
+    return ERROR_DATABASE;
+}
 
+window.getAllErrors = getAllErrors;
 
 /*
 ===========================================
