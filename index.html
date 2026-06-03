@@ -1,1 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- =========================================
+         DEBUGFORGE - META CONFIG
+    ========================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>DebugForge | Fix Errors Faster</title>
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- =========================================
+     APP WRAPPER
+========================================== -->
+<div class="app">
+
+    <!-- =====================================
+         SIDEBAR NAVIGATION
+    ====================================== -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <h1>DebugForge</h1>
+            <p>Fix bugs smarter</p>
+        </div>
+
+        <nav>
+            <ul>
+
+                <li class="nav-link active" data-route="dashboard">
+                    <span class="material-icons">dashboard</span>
+                    Dashboard
+                </li>
+
+                <li class="nav-link" data-route="decoder">
+                    <span class="material-icons">bug_report</span>
+                    Error Decoder
+                </li>
+
+                <li class="nav-link" data-route="library">
+                    <span class="material-icons">menu_book</span>
+                    Error Library
+                </li>
+
+                <li class="nav-link" data-route="checklist">
+                    <span class="material-icons">checklist</span>
+                    Debug Checklist
+                </li>
+
+                <li class="nav-link" data-route="saved">
+                    <span class="material-icons">bookmark</span>
+                    Saved Solutions
+                </li>
+
+                <li class="nav-link" data-route="settings">
+                    <span class="material-icons">settings</span>
+                    Settings
+                </li>
+
+            </ul>
+        </nav>
+
+    </aside>
+
+    <!-- =====================================
+         MAIN CONTENT AREA
+    ====================================== -->
+    <main class="main-content">
+
+        <!-- Top Bar -->
+        <header class="topbar">
+
+            <h2 id="pageTitle">Dashboard</h2>
+
+            <div class="topbar-actions">
+
+                <button id="openPaletteBtn">
+                    Ctrl + K
+                </button>
+
+                <button id="themeToggle">
+                    🌙
+                </button>
+
+            </div>
+
+        </header>
+
+        <!-- =====================================
+             DASHBOARD
+        ====================================== -->
+        <section id="dashboard" class="page active-page">
+
+            <div class="hero">
+                <h1>Welcome to DebugForge 🚀</h1>
+                <p>Fix errors, debug faster, and save solutions.</p>
+            </div>
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <h3>Total Errors</h3>
+                    <span id="errorCount">0</span>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Saved Solutions</h3>
+                    <span id="savedCount">0</span>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Recent Searches</h3>
+                    <span id="searchCount">0</span>
+                </div>
+
+            </div>
+
+            <div class="quick-actions">
+
+                <button class="action-btn" data-route="decoder">
+                    Decode Error
+                </button>
+
+                <button class="action-btn" data-route="library">
+                    Browse Library
+                </button>
+
+                <button class="action-btn" data-route="saved">
+                    Saved Solutions
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- =====================================
+             ERROR DECODER
+        ====================================== -->
+        <section id="decoder" class="page">
+
+            <div class="section-header">
+                <h2>Error Decoder</h2>
+                <p>Paste an error message to decode it.</p>
+            </div>
+
+            <textarea id="errorInput" placeholder="Paste error here..."></textarea>
+
+            <button id="decodeBtn">Decode Error</button>
+
+            <div id="decoderResult">
+                <h3>Result will appear here</h3>
+            </div>
+
+        </section>
+
+        <!-- =====================================
+             ERROR LIBRARY
+        ====================================== -->
+        <section id="library" class="page">
+
+            <div class="section-header">
+                <h2>Error Library</h2>
+                <p>Search common errors</p>
+            </div>
+
+            <input type="text" id="librarySearch" placeholder="Search errors...">
+
+            <div id="errorList"></div>
+
+        </section>
+
+        <!-- =====================================
+             CHECKLIST
+        ====================================== -->
+        <section id="checklist" class="page">
+
+            <div class="section-header">
+                <h2>Debug Checklist</h2>
+            </div>
+
+            <div class="checklist-container">
+
+                <label><input type="checkbox"> Check console</label>
+                <label><input type="checkbox"> Check selectors</label>
+                <label><input type="checkbox"> Check file paths</label>
+                <label><input type="checkbox"> Check API calls</label>
+
+            </div>
+
+        </section>
+
+        <!-- =====================================
+             SAVED SOLUTIONS
+        ====================================== -->
+        <section id="saved" class="page">
+
+            <div class="section-header">
+                <h2>Saved Solutions</h2>
+            </div>
+
+            <div id="savedSolutions"></div>
+
+        </section>
+
+        <!-- =====================================
+             SETTINGS
+        ====================================== -->
+        <section id="settings" class="page">
+
+            <div class="section-header">
+                <h2>Settings</h2>
+            </div>
+
+            <button id="themeSwitcher">Toggle Theme</button>
+            <button id="clearStorage">Clear Data</button>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- =========================================
+     COMMAND PALETTE
+========================================== -->
+<div id="commandPalette" class="hidden">
+
+    <div class="palette-box">
+
+        <input id="paletteSearch" placeholder="Search commands...">
+
+        <div id="paletteResults"></div>
+
+    </div>
+
+</div>
+
+<!-- =========================================
+     SCRIPTS (LOAD ORDER IMPORTANT)
+========================================== -->
+
+<script src="./js/errors.js"></script>
+<script src="./js/storage.js"></script>
+<script src="./js/search.js"></script>
+<script src="./js/router.js"></script>
+<script src="./js/palette.js"></script>
+<script src="./js/app.js"></script>
+
+</body>
+</html>
